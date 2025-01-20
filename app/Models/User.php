@@ -18,10 +18,15 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
+
+        public function movies()
+    {
+        return $this->hasMany(Movie::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
