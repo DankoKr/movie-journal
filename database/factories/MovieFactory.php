@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence, 
+            'tags' => json_encode($this->faker->words(5)), 
+            'image_data' => random_bytes(70),    
+            'user_id' => User::factory(), 
+            'trailer_url' => $this->faker->url,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

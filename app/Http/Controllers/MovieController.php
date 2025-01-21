@@ -13,7 +13,11 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::with('user')->latest()->simplePaginate(3);
+
+        return view('movies.index', [
+            'movies' => $movies
+        ]);
     }
 
     /**

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->json('tags');
+            $table->binary('image_data');
+            $table->string('trailer_url');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
