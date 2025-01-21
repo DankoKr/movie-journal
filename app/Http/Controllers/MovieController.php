@@ -13,7 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::with('user')->latest()->simplePaginate(4);
+        $movies = Movie::with('user')->latest()->simplePaginate(6);
 
         return view('movies.index', [
             'movies' => $movies
@@ -33,7 +33,27 @@ class MovieController extends Controller
      */
     public function store(StoreMovieRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|min:3',
+            'tags' => 'required|string',
+            'image_data' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'trailer_url' => 'required|url',
+        ]);
+
+        $tags = json_encode(array_map('trim', explode(',', $validated['tags'])));
+        // Get the binary content of the uploaded file
+        $imageBinary = file_get_contents($request->file('image_data')->getRealPath());
+    
+        Movie::create([
+            'title' => $validated['title'],
+            'tags' => $tags,
+            'image_data' => $imageBinary,
+            'trailer_url' => $validated['trailer_url'],
+            'user_id' => 1,
+        ]);
+
+
+        return redirect('/movies');
     }
 
     /**

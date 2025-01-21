@@ -63,9 +63,9 @@
             <x-button href="/movies" class="text-black bg-yellow-600 hover:bg-black hover:text-yellow-600">
                 Cancel
             </x-button>
-            <x-button class="text-black bg-yellow-600 hover:bg-black hover:text-yellow-600">
+            <x-form-button>
                 Save
-            </x-button>
+            </x-form-button>
         </div>
     </form>
 </x-layout>
