@@ -28,7 +28,7 @@
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <img class="h-16 w-16 pb-1" src="{{ asset('images/logo.png') }}" alt="Movie Journal Logo">
+                            <img class="h-16 w-16 pb-1 pt-1" src="{{ asset('images/logo.png') }}" alt="Movie Journal Logo">
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
@@ -59,7 +59,7 @@
                             @auth
                                 <form method="POST" action="/logout">
                                     @csrf
-                                    <x-button class="text-white">Log Out</x-button>
+                                    <x-form-button class="hover:text-white">Log Out</x-form-button>
                                 </form>
                             @endauth
                         </div>
@@ -86,7 +86,7 @@
                     @auth
                         <form method="POST" action="/logout">
                             @csrf
-                            <button class="text-white">Log Out</button>
+                            <x-form-button>Log Out</x-form-button>
                         </form>
                     @endauth
                 </div>
