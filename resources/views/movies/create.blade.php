@@ -9,58 +9,43 @@
         <div class="space-y-10">
             <div class="border-b border-yellow-600 pb-12">
                 <div class="grid grid-cols-1 gap-y-8 sm:grid-cols-6 sm:gap-x-6">
-                    <div class="col-span-1 sm:col-span-4">
-                        <label for="title" class="block text-sm font-medium leading-6 text-yellow-600">Title</label>
+                    <x-form-field>
+                        <x-form-label for="title">Title</x-form-label>
                         <div class="mt-2">
-                            <input type="text" name="title" id="title" 
-                                   class="block w-full rounded-md shadow-sm border border-yellow-600 bg-black py-1.5 px-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 sm:text-sm" 
-                                   placeholder="Movie Title" required>
-                            @error('title')
-                                <p class="text-xs text-yellow-600 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
+                            <x-form-input type="text" name="title" id="title" placeholder="Movie Title" required></x-form-input>
+                            <x-form-error name="title" />
                         </div>
-                    </div>
+                    </x-form-field>
 
-                    <div class="col-span-1 sm:col-span-4">
-                        <label for="tags" class="block text-sm font-medium leading-6 text-yellow-600">Tags (comma-separated)</label>
+                    <x-form-field>
+                        <x-form-label for="tags">Tags (comma-separated)</x-form-label>
                         <div class="mt-2">
-                            <input type="text" name="tags" id="tags" 
-                                   class="block w-full rounded-md shadow-sm border border-yellow-600 bg-black py-1.5 px-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 sm:text-sm" 
-                                   placeholder="e.g., Action, Adventure, Drama" required>
-                            @error('tags')
-                                <p class="text-xs text-yellow-600 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
+                            <x-form-input type="text" name="tags" id="tags" placeholder="e.g., Action, Adventure, Drama" required></x-form-input>
+                            <x-form-error name="tags" />
                         </div>
-                    </div>
+                    </x-form-field>
 
-                    <div class="col-span-1 sm:col-span-4">
-                        <label for="image_data" class="block text-sm font-medium leading-6 text-yellow-600">Image</label>
+                    <x-form-field>
+                        <x-form-label for="image_data">Image</x-form-label>
                         <div class="mt-2">
-                            <input type="file" name="image_data" id="image_data" 
-                                   class="block w-full text-sm text-white border border-yellow-600 bg-black rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-600" required>
-                            @error('image_data')
-                                <p class="text-xs text-yellow-600 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
+                            <x-form-input type="file" name="image_data" id="image_data" required></x-form-input>
+                            <x-form-error name="image_data" />
                         </div>
-                    </div>
+                    </x-form-field>
 
-                    <div class="col-span-1 sm:col-span-4">
-                        <label for="trailer_url" class="block text-sm font-medium leading-6 text-yellow-600">Trailer URL</label>
+                    <x-form-field>
+                        <x-form-label for="trailer_url">Trailer URL</x-form-label>
                         <div class="mt-2">
-                            <input type="url" name="trailer_url" id="trailer_url" 
-                                   class="block w-full rounded-md shadow-sm border border-yellow-600 bg-black py-1.5 px-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 sm:text-sm" 
-                                   placeholder="https://example.com/trailer" required>
-                            @error('trailer_url')
-                                <p class="text-xs text-yellow-600 font-semibold mt-1">{{ $message }}</p>
-                            @enderror
+                            <x-form-input type="url" name="trailer_url" id="trailer_url" placeholder="https://example.com/trailer" required></x-form-input>
+                            <x-form-error name="trailer_url" />
                         </div>
-                    </div>
+                    </x-form-field>
                 </div>
             </div>
         </div>
 
         <div class="mt-6 flex flex-col-reverse sm:flex-row items-center justify-end gap-4">
-            <x-button href="/movies" class="text-black bg-yellow-600 hover:bg-black hover:text-yellow-600">
+            <x-button href="/movies">
                 Cancel
             </x-button>
             <x-form-button>
