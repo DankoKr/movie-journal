@@ -13,7 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::with('user')->latest()->simplePaginate(3);
+        $movies = Movie::with('user')->latest()->simplePaginate(4);
 
         return view('movies.index', [
             'movies' => $movies
