@@ -33,7 +33,9 @@
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav-link href="/" :active="request()->is('/')" class="block">Home</x-nav-link>
+                                @auth
                                 <x-nav-link href="/movies" :active="request()->is('movies')" class="block">My Movies</x-nav-link>
+                                @endauth
                             </div>
                         </div>
                     </div>
