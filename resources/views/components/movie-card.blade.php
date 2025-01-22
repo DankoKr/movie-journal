@@ -6,7 +6,7 @@
 @endphp
 
 <a href="/movies/{{ $movie['id'] }}">
-    <div class="bg-black text-white border border-yellow-700 rounded-lg shadow-lg overflow-hidden max-w-sm mx-auto transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+    <div class="bg-black text-white border border-yellow-700 rounded-lg shadow-lg overflow-hidden max-w-sm mx-auto transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl w-[280px]">
         @if($imageBase64)
             <img class="w-full h-56 object-cover" src="{{ $imageBase64 }}" alt="{{ $movie->title }}">
         @else

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -50,7 +51,7 @@ class MovieController extends Controller
             'tags' => $tags,
             'image_data' => $imageBinary,
             'trailer_url' => $validated['trailer_url'],
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
         ]);
 
 
