@@ -77,7 +77,19 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        //
+        // Gate::authorize('edit-job', $movie);
+        
+        $request->validate([
+            'title' => 'required|string|min:3',
+            'trailer_url' => 'required|url',
+        ]);
+
+        $movie->update([
+            'title' => request('title'),
+            'trailer_url' => request('trailer_url'),
+        ]);
+
+        return redirect('/movie/' . $movie->id);
     }
 
     /**
