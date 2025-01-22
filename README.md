@@ -27,7 +27,13 @@ Ensure the following are installed before setting up the application:
    cd movie-journal
    ```
 
-3. Run the app:
+3. Run the db migrations:
+
+   ```bash
+   php artisan migrate 
+   ```
+
+4. Start the app:
 
    ```bash
    php artisan serve
