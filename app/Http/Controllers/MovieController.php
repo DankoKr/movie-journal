@@ -85,6 +85,10 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        //Gate::authorize('edit-job', $job);
+
+        $movie->delete();
+
+        return redirect('/movies');
     }
 }

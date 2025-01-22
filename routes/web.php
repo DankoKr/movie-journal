@@ -16,7 +16,7 @@ Route::get('/movies/{movie}', [MovieController::class, 'show']);
 //      ->can('edit', 'movie');
 
 // Route::patch('/movies/{movie}', [MovieController::class, 'update']);
-// Route::delete('/movies/{movie}', [MovieController::class, 'destroy']);
+Route::delete('/movies/{movie}', [MovieController::class, 'destroy']);
 
 Route::get('/register', [RegisterUserController::class, 'create']);
 Route::post('/register', [RegisterUserController::class, 'store']);
