@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Edit Movie: {{ $movie->title }}
+        Movie: {{ $movie->title }}
     </x-slot:heading>
 
     <form method="POST" action="/movies/{{ $movie->id }}" class="px-4 sm:px-6 lg:px-8">
@@ -31,13 +31,14 @@
 
         <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-4 sm:gap-x-6">
             <div class="flex flex-col sm:flex-row w-full sm:w-auto order-1 sm:order-2 space-y-2 sm:space-y-0 sm:gap-x-6">
-                <x-form-button>
+                <x-button href="/movies/{{ $movie->id }}" class="order-2 sm:order-1">
+                    Cancels
+                </x-button>
+                {{-- After sumit update is there but goes to 404 page --}}
+                <x-form-button class="order-1 sm:order-2">
                     Update
                 </x-form-button>
 
-                <x-button href="/movies/{{ $movie->id }}">
-                    Cancel
-                </x-button>
             </div>
 
             <button form="delete-form" class="text-red-500 text-sm font-bold w-full sm:w-auto sm:mr-auto order-2 sm:order-1" 

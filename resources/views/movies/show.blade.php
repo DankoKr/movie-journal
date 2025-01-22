@@ -38,16 +38,16 @@
                     @endforeach
                 </div>
             </div>
-
+                <div class="mt-6 border-t border-yellow-600 w-full"></div>
                 <div class="mt-6 flex flex-col-reverse sm:flex-row items-center justify-end gap-4">
                     <x-secondary-button href="/movies">
                         Back
                     </x-secondary-button>
-                    {{-- @can('edit', $movie) --}}
+                    @can('edit-movie', $movie)
                     <x-secondary-button href="/movies/{{ $movie->id }}/edit">
                         Edit Movie
                     </x-secondary-button>
-                    {{-- @endcan --}}
+                    @endcan
                 </div>
         </div>
     </div>

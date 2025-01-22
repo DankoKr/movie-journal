@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('edit-movie', function (User $user, Movie $movie) {
+           return $movie->user->is($user);
+       });
     }
 }

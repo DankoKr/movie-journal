@@ -12,8 +12,8 @@ Route::post('/movies', [MovieController::class, 'store']);
 Route::get('/movies/{movie}', [MovieController::class, 'show']);
 
 Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])
-     ->middleware('auth');
-    //  ->can('edit', 'movie');
+     ->middleware('auth')
+     ->can('edit-movie', 'movie');
 
 Route::patch('/movies/{movie}', [MovieController::class, 'update']);
 Route::delete('/movies/{movie}', [MovieController::class, 'destroy']);

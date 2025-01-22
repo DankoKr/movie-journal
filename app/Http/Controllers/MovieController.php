@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Movie;
 
 class MovieController extends Controller
@@ -77,7 +78,7 @@ class MovieController extends Controller
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        // Gate::authorize('edit-job', $movie);
+        Gate::authorize('edit-movie', $movie);
         
         $request->validate([
             'title' => 'required|string|min:3',
@@ -97,7 +98,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //Gate::authorize('edit-job', $job);
+        Gate::authorize('edit-movie', $movie);
 
         $movie->delete();
 
