@@ -59,7 +59,9 @@
                             @auth
                                 <form method="POST" action="/logout">
                                     @csrf
-                                    <x-form-button class="hover:text-white">Log Out</x-form-button>
+                                    <button class="w-full sm:w-auto rounded-md bg-black px-3 py-2 text-sm font-semibold text-yellow-600 shadow-sm hover:text-white transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2">
+                                        Log Out
+                                    </button>
                                 </form>
                             @endauth
                         </div>
@@ -86,7 +88,9 @@
                     @auth
                         <form method="POST" action="/logout">
                             @csrf
-                            <x-form-button>Log Out</x-form-button>
+                            <button class="w-full sm:w-auto rounded-md bg-black px-3 py-2 text-sm font-semibold text-yellow-600 shadow-sm hover:text-white transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2">
+                                Log Out
+                            </button>
                         </form>
                     @endauth
                 </div>
@@ -96,8 +100,13 @@
         <header class="bg-black">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
                 <h1 class="text-3xl font-bold tracking-tight text-white text-center sm:text-left">{{ $heading }}</h1>
-
-                <x-button href="/movies/create" class="px-4 py-2 rounded self-center sm:self-auto">Add movie</x-button>
+                @auth
+                @if (request()->is('/') || request()->is('movies'))
+                <x-button href="/movies/create" class="px-4 py-2 rounded self-center sm:self-auto">
+                    Add movie
+                </x-button>
+                @endif
+                @endauth
             </div>
         </header>
 
