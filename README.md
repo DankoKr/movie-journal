@@ -27,7 +27,7 @@ Ensure the following are installed before setting up the application:
    cd movie-journal
    ```
 
-3. Install the dependencies:
+3. Run the app:
 
    ```bash
    php artisan serve
