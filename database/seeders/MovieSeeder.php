@@ -16,7 +16,5 @@ class MovieSeeder extends Seeder
     {
         $user = \App\Models\User::factory()->create();
         $movies = \App\Models\Movie::factory()->count(5)->for($user)->create();
-
-        dd($movies);
     }
 }

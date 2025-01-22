@@ -8,4 +8,7 @@
             <x-movie-card :movie=$movie></x-movie-card>
         @endforeach
     </div>
+        <div class="bg-white">              
+            {{ $movies->links() }}
+        </div>
 </x-layout>

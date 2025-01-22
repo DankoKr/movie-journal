@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Movie;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,5 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('edit-movie', function (User $user, Movie $movie) {
            return $movie->user->is($user);
        });
+
+       Paginator::defaultView('simple-tailwind.blade.php');
     }
 }
