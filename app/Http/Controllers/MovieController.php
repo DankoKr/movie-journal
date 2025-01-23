@@ -33,18 +33,19 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMovieRequest $request)
+    public function store()
     {
-        $validated = $request->validate([
-            'title' => 'required|string|min:3',
-            'tags' => 'required|string',
-            'image_data' => 'required|file|mimes:jpeg,png,jpg|max:2048',
-            'trailer_url' => 'required|url',
+        $validated = request()->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'tags' => ['required', 'string'],
+            'image_data' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'trailer_url' => ['required', 'url'],
         ]);
+
 
         $tags = json_encode(array_map('trim', explode(',', $validated['tags'])));
         // Get the binary content of the uploaded file
-        $imageBinary = file_get_contents($request->file('image_data')->getRealPath());
+        $imageBinary = file_get_contents(request()->file('image_data')->getRealPath());
     
         Movie::create([
             'title' => $validated['title'],
@@ -77,14 +78,15 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMovieRequest $request, Movie $movie)
+    public function update(Movie $movie)
     {
         Gate::authorize('edit-movie', $movie);
         
-        $request->validate([
-            'title' => 'required|string|min:3',
-            'trailer_url' => 'required|url',
+        request()->validate([
+            'title' => ['required', 'string', 'min:3'],
+            'trailer_url' => ['required', 'url'],
         ]);
+
 
         $movie->update([
             'title' => request('title'),
