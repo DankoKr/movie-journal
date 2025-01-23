@@ -5,8 +5,7 @@
 This web application enables users to manage their movie watchlist efficiently. Key features include:
 - Displaying the movie poster
 - Linking to the movie trailer on YouTube.
-- Categorizing movies by genre (in progress)
-
+- Discovering movies from other users
 
 ## Requirements
 Ensure the following are installed before setting up the application:

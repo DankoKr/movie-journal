@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +12,26 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+     public function index(Request $request)
     {
-        $movies = Movie::with('user')->latest()->simplePaginate(6);
+        $query = Movie::query();
 
-        return view('movies.index', [
-            'movies' => $movies
-        ]);
+        if ($request->filled('username')) {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('username', $request->input('username'));
+            });
+        } else {
+            // Default: Show only the logged-in user's movies
+            $query->where('user_id', Auth::user()->id);
+        }
+
+        if ($request->filled('title')) {
+            $query->where('title', 'LIKE', '%' . $request->input('title') . '%');
+        }
+
+        $movies = $query->latest()->simplePaginate(6)->appends($request->all());
+
+        return view('movies.index', compact('movies'));
     }
 
     /**
