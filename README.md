@@ -12,6 +12,8 @@ Ensure the following are installed before setting up the application:
 - PHP
 - SQL
 - Laravel
+- Node
+- Npm
 
 ## Installation
 1. Clone the repository:
@@ -20,20 +22,40 @@ Ensure the following are installed before setting up the application:
    git clone https://github.com/DankoKr/movie-journal.git
    ```
 
-2. Navigate to the project directory:
+2. Fill in the .env file:
+
+   Make sure you provide database details for:
+   - DB_CONNECTION=mysql (or any other db you want to use)
+   - DB_HOST=
+   - DB_PORT=
+   - DB_DATABASE=
+   - DB_USERNAME=
+   - DB_PASSWORD=
+
+3. Navigate to the project directory:
 
    ```bash
    cd movie-journal
    ```
 
-3. Run the db migrations:
+4. Run the db migrations:
 
    ```bash
    php artisan migrate 
    ```
 
-4. Start the app:
+5. Start the laravel app:
 
    ```bash
    php artisan serve
+   ```
+
+6. Start Vite:
+
+   ```bash
+   npm install
+   ```
+
+   ```bash
+   npm run dev
    ```

@@ -34,7 +34,6 @@
                 <x-button href="/movies/{{ $movie->id }}" class="order-2 sm:order-1">
                     Cancels
                 </x-button>
-                {{-- After sumit update is there but goes to 404 page --}}
                 <x-form-button class="order-1 sm:order-2">
                     Update
                 </x-form-button>

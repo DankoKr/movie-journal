@@ -105,7 +105,7 @@ class MovieController extends Controller
             'trailer_url' => request('trailer_url'),
         ]);
 
-        return redirect('/movie/' . $movie->id);
+        return redirect('/movies');
     }
 
     /**
